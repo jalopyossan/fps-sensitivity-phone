@@ -63,13 +63,13 @@ if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.se
 window.addEventListener("load",()=>setTimeout(()=>{const s=document.getElementById("splash");if(s)s.classList.add("hide")},900));
 const CFG={"title": "FPS感度調整ツール スマホ版", "eyebrow": "SMARTPHONE COMPLETE", "badge": "スマホ用 / 近〜中距離・反応速度重視", "body_bg": "#0b1220", "app_max": "760px", "hero": "linear-gradient(135deg,#0f172a,#1e293b)", "accent": "#f97316", "accent2": "#fb923c", "tab_bg": "#0b1220dd", "card_bg": "#f8fafc", "border": "#e2e8f0", "base": {"cam": 70, "ads": 65, "gyroCam": 340, "gyro": 340}, "dist_base": 60, "dist_min": 10, "dist_max": 120, "scopes": {"tpp": 1.65, "fpp": 1.55, "red": 1, "x2": 0.88, "x3": 0.72, "x4": 0.55, "x6": 0.38, "x8": 0.22}, "recoil": {"AR": 62, "BERYL": 68, "SMG": 55, "DMR": 52, "SR": 45, "LMG": 72}, "templates": {"AR": [70, 65, 340, 340, 62, 60, 75, ""], "BERYL": [66, 60, 350, 365, 68, 70, 70, ""], "SMG": [82, 75, 365, 370, 55, 30, 80, ""], "LMG": [62, 66, 355, 375, 72, 60, 70, ""], "DMR": [58, 52, 285, 280, 52, 90, 65, ""], "SR": [54, 48, 260, 240, 45, 100, 65, ""]}};
 const scopesBase=[{key:"tpp",label:"TPPスコープなし"},{key:"fpp",label:"FPPスコープなし"},{key:"red",label:"ホロ・レッドドット"},{key:"x2",label:"2倍スコープ"},{key:"x3",label:"3倍スコープ"},{key:"x4",label:"4倍スコープ"},{key:"x6",label:"6倍スコープ"},{key:"x8",label:"8倍スコープ"}];
-const weaponDisplayNames={
-AR:"AR（5.56）",
-BERYL:"AR（7.62）",
-SMG:"SMG",
-LMG:"LMG",
-DMR:"DMR",
-SR:"SR"
+const weaponDisplayNames = {
+  AR: "AR（5.56）",
+  BERYL: "AR（7.62）",
+  SMG: "SMG",
+  LMG: "LMG",
+  DMR: "DMR",
+  SR: "SR"
 };
 function weaponName(key){return weaponDisplayNames[key]||key}
 const fingerModes={2:{finger:90,cam:10,ads:10,gyro:-20,note:"2本指：感度で補う。指主体・ジャイロ弱め。"},3:{finger:80,cam:5,ads:5,gyro:-10,note:"3本指：少し余裕。やや高め。"},4:{finger:70,cam:0,ads:0,gyro:0,note:"4本指：基準。バランス型。"},5:{finger:80,cam:5,ads:5,gyro:-20,note:"5本指：指で補正。ジャイロ少し下げ。"},6:{finger:85,cam:8,ads:5,gyro:-30,note:"6本指：上級。指主体でジャイロ低め。"}};
