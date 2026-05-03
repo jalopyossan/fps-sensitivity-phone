@@ -78,7 +78,7 @@ button.danger{background:#fee2e2;color:#7f1d1d;border:1px solid #fecaca}
 <div class="hero">
   <div class="logo">FPS SENSITIVITY TOOL</div>
   <h1>📱 FPS感度ツール</h1>
-  <div class="sub">スマホ専用 / 完全最終版 / 整数四捨五入</div>
+  <div class="sub">スマホ専用 / 完全最終版V2 / 整数四捨五入 / 強制更新版</div>
 </div>
 
 <div class="nav">
@@ -134,6 +134,7 @@ button.danger{background:#fee2e2;color:#7f1d1d;border:1px solid #fecaca}
 </div>
 <button onclick="copyResult()">結果をコピー</button>
 <button class="blue" onclick="saveHistory()">この設定を保存</button>
+<button class="danger" onclick="resetSettings()">保存設定をリセット</button>
 <div class="warn" id="advice"></div>
 </div>
 </section>
@@ -165,7 +166,7 @@ button.danger{background:#fee2e2;color:#7f1d1d;border:1px solid #fecaca}
 <script>
 'use strict';
 
-const APP_VERSION = 'absolute-final-v1';
+const APP_VERSION = 'absolute-final-v2';
 const DEVICE = 'phone';
 
 const state = {
@@ -402,6 +403,24 @@ function saveState() {
     dist:el('dist').value,
     speed:el('speed').value
   }));
+}
+
+function resetSettings() {
+  localStorage.removeItem(`state_${APP_VERSION}_phone`);
+  localStorage.removeItem(`hist_${APP_VERSION}_phone`);
+  state.mode = 'unifiedMode';
+  state.weapon = 'ar556';
+  state.diag = 'none';
+  el('fingers').value = '2';
+  el('gyro').value = 'mid';
+  el('style').value = 'normal';
+  el('dist').value = 80;
+  el('speed').value = 100;
+  document.querySelectorAll('.modePick').forEach(x => x.classList.toggle('active', x.dataset.v === state.mode));
+  document.querySelectorAll('.weapon').forEach(x => x.classList.toggle('active', x.dataset.v === state.weapon));
+  document.querySelectorAll('.diag').forEach(x => x.classList.toggle('active', x.dataset.v === state.diag));
+  calc();
+  alert('保存設定をリセットしました');
 }
 
 function restore() {
